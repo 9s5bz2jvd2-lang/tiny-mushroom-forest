@@ -33,7 +33,7 @@ python main.py
 
 > Windows 用户可将激活命令替换为：`.venv\\Scripts\\activate`
 
-## 🍄 可爱的介绍词（中文）
+## 🍄 介绍词（中文）
 
 > 一片会悄悄长在桌面上的小蘑菇森林。
 > 它不会吵你，也不会挡住你，只是在屏幕角落慢慢冒出彩色小蘑菇，陪你工作、发呆、写代码。
@@ -103,7 +103,7 @@ python main.py
 
 On Windows, use `.venv\\Scripts\\activate` instead of the `source` command.
 
-## 🍄 Cute introduction copy (English)
+## 🍄 Introduction copy (English)
 
 > A tiny mushroom forest that quietly grows on your desktop.
 > It does not interrupt you or cover your work — it simply lets colorful little mushrooms appear in the corners of your screen, keeping you company while you work, think, or code.
