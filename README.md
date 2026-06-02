@@ -2,15 +2,16 @@
 
 中文 | [English](#english)
 
-Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林。它很轻、很安静、透明得像一层晨雾：每隔 5–15 秒，就会有一朵彩色小蘑菇从桌面角落悄悄冒头，像在说：今天也辛苦啦，给你长一点点可爱。
+Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林，也是一枚轻量的桌面生活美学小玩具 / cozy mini game。它很轻、很安静、透明得像一层晨雾：每隔 5–15 秒，就会有一朵彩色小蘑菇从桌面角落悄悄冒头，像在说：今天也辛苦啦，给你长一点点可爱。
 
-蘑菇最多保留 20 朵，旧朋友会轻轻让位给新朋友。所有蘑菇都由 `QPainter` 现场画出来，不需要任何图片素材。
+蘑菇最多保留 20 朵，旧朋友会轻轻让位给新朋友。所有蘑菇都由 `QPainter` 现场画出来，不需要任何图片素材。适合搜索「桌面美化」「生活美学」「治愈小游戏」「桌面小玩具」「cozy game」「desktop toy」的人。
 
 > 给忙碌的桌面种一小片不会打扰人的森林。
 
 ## ✨ 功能
 
 - Python 3.11+ / PySide6
+- 桌面生活美学 / desktop toy / cozy mini game
 - 透明、无边框、置顶 overlay
 - 每 5–15 秒随机长出一朵蘑菇
 - 最多 20 朵，超过后删除最早的一朵
@@ -23,7 +24,7 @@ Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林。�
 ## 🚀 运行
 
 ```bash
-git clone https://github.com/huangzesen/tiny-mushroom-forest.git
+git clone https://github.com/9s5bz2jvd2-lang/tiny-mushroom-forest.git
 cd tiny-mushroom-forest
 python3 -m venv .venv
 source .venv/bin/activate
@@ -64,15 +65,16 @@ MIT
 
 # 🍄 Tiny Mushroom Forest
 
-Tiny Mushroom Forest is a tiny mushroom woodland that quietly moves into your desktop. It is lightweight, transparent, and gentle — like a layer of morning mist. Every 5–15 seconds, a colorful little mushroom shyly pops up from a corner of your screen, as if whispering: you worked hard today; here is a little bit of cute.
+Tiny Mushroom Forest is a tiny mushroom woodland that quietly moves into your desktop — a lightweight desktop toy, cozy mini game, and little piece of everyday life aesthetics. It is transparent and gentle, like a layer of morning mist. Every 5–15 seconds, a colorful little mushroom shyly pops up from a corner of your screen, as if whispering: you worked hard today; here is a little bit of cute.
 
-Up to 20 mushrooms are kept at a time, and older friends softly step aside for new ones. Every mushroom is drawn live with `QPainter`, with no image assets required.
+Up to 20 mushrooms are kept at a time, and older friends softly step aside for new ones. Every mushroom is drawn live with `QPainter`, with no image assets required. Search-friendly words: desktop aesthetics, cozy game, desktop toy, mushroom game, generative art, screen overlay.
 
 > Plant a small, non-intrusive forest on your busy desktop.
 
 ## ✨ Features
 
 - Python 3.11+ / PySide6
+- Desktop aesthetics / desktop toy / cozy mini game
 - Transparent, frameless, always-on-top overlay
 - A new mushroom grows every 5–15 seconds
 - Keeps at most 20 mushrooms, removing the oldest one first
@@ -85,7 +87,7 @@ Up to 20 mushrooms are kept at a time, and older friends softly step aside for n
 ## 🚀 Run
 
 ```bash
-git clone https://github.com/huangzesen/tiny-mushroom-forest.git
+git clone https://github.com/9s5bz2jvd2-lang/tiny-mushroom-forest.git
 cd tiny-mushroom-forest
 python3 -m venv .venv
 source .venv/bin/activate
