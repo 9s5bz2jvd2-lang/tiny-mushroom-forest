@@ -2,9 +2,11 @@
 
 中文 | [English](#english)
 
-一个轻量、可爱、透明的桌面小森林：每隔 5–15 秒，屏幕上会悄悄长出一朵彩色小蘑菇。蘑菇最多保留 20 朵，旧蘑菇会自动让位给新朋友。所有蘑菇都由 `QPainter` 绘制，不需要任何图片素材。
+Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林。它很轻、很安静、透明得像一层晨雾：每隔 5–15 秒，就会有一朵彩色小蘑菇从桌面角落悄悄冒头，像在说：今天也辛苦啦，给你长一点点可爱。
 
-> 愿你的屏幕边角，也能长出一点点温柔的小生命。
+蘑菇最多保留 20 朵，旧朋友会轻轻让位给新朋友。所有蘑菇都由 `QPainter` 现场画出来，不需要任何图片素材。
+
+> 给忙碌的桌面种一小片不会打扰人的森林。
 
 ## ✨ 功能
 
@@ -31,11 +33,11 @@ python main.py
 
 > Windows 用户可将激活命令替换为：`.venv\\Scripts\\activate`
 
-## 🧚 可爱的提示词（中文）
+## 🍄 可爱的介绍词（中文）
 
-如果你想让 AI 帮你继续改造这个小项目，可以这样说：
-
-> 请把这个桌面小蘑菇森林做得更可爱一点：保持轻量、透明、温柔，不要打扰用户工作。蘑菇要像悄悄从屏幕边角冒出来的小朋友，可以有柔和的颜色、轻微摇晃、可爱的名字、季节变化或小彩蛋。请优先保证代码简洁、可运行、无图片依赖，用 PySide6/QPainter 绘制，并保留 ESC 和系统托盘退出。
+> 一片会悄悄长在桌面上的小蘑菇森林。
+> 它不会吵你，也不会挡住你，只是在屏幕角落慢慢冒出彩色小蘑菇，陪你工作、发呆、写代码。
+> 每一朵蘑菇都像一个安静的小朋友：轻轻出现，乖乖待着，把忙碌的电脑变成一点点温柔的森林。
 
 ## 🌱 可以继续长出的点子
 
@@ -70,9 +72,11 @@ MIT
 
 # 🍄 Tiny Mushroom Forest
 
-A tiny, gentle, transparent desktop forest: every 5–15 seconds, a colorful little mushroom quietly grows on your screen. Up to 20 mushrooms are kept; the oldest one steps aside when a new friend appears. All mushrooms are drawn with `QPainter`, with no image assets required.
+Tiny Mushroom Forest is a tiny mushroom woodland that quietly moves into your desktop. It is lightweight, transparent, and gentle — like a layer of morning mist. Every 5–15 seconds, a colorful little mushroom shyly pops up from a corner of your screen, as if whispering: you worked hard today; here is a little bit of cute.
 
-> May a small corner of your screen grow something soft and alive.
+Up to 20 mushrooms are kept at a time, and older friends softly step aside for new ones. Every mushroom is drawn live with `QPainter`, with no image assets required.
+
+> Plant a small, non-intrusive forest on your busy desktop.
 
 ## ✨ Features
 
@@ -99,11 +103,11 @@ python main.py
 
 On Windows, use `.venv\\Scripts\\activate` instead of the `source` command.
 
-## 🧚 Cute prompt (English)
+## 🍄 Cute introduction copy (English)
 
-If you want an AI assistant to keep improving this project, try this prompt:
-
-> Please make this tiny desktop mushroom forest even cuter while keeping it lightweight, transparent, gentle, and non-intrusive. The mushrooms should feel like shy little friends quietly growing from the corners of the screen. Add soft colors, subtle motion, cute names, seasonal variations, or tiny easter eggs if appropriate. Prioritize clean, runnable code with no image dependencies, draw everything with PySide6/QPainter, and keep both ESC and system-tray exit support.
+> A tiny mushroom forest that quietly grows on your desktop.
+> It does not interrupt you or cover your work — it simply lets colorful little mushrooms appear in the corners of your screen, keeping you company while you work, think, or code.
+> Each mushroom feels like a shy little friend: softly arriving, calmly staying, and turning a busy computer into a gentler place.
 
 ## 🌱 Ideas for future sprouts
 
