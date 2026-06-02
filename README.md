@@ -39,14 +39,6 @@ python main.py
 > 它不会吵你，也不会挡住你，只是在屏幕角落慢慢冒出彩色小蘑菇，陪你工作、发呆、写代码。
 > 每一朵蘑菇都像一个安静的小朋友：轻轻出现，乖乖待着，把忙碌的电脑变成一点点温柔的森林。
 
-## 🌱 可以继续长出的点子
-
-- 给每朵蘑菇随机名字
-- 点击托盘菜单切换“雨后森林 / 星空森林 / 糖果森林”主题
-- 加一点非常轻微的摇晃动画
-- 按时间生成不同季节的蘑菇颜色
-- 让蘑菇偶尔长出小小的发光孢子
-
 ## 📁 文件结构
 
 ```text
@@ -108,14 +100,6 @@ On Windows, use `.venv\\Scripts\\activate` instead of the `source` command.
 > A tiny mushroom forest that quietly grows on your desktop.
 > It does not interrupt you or cover your work — it simply lets colorful little mushrooms appear in the corners of your screen, keeping you company while you work, think, or code.
 > Each mushroom feels like a shy little friend: softly arriving, calmly staying, and turning a busy computer into a gentler place.
-
-## 🌱 Ideas for future sprouts
-
-- Give each mushroom a random cute name
-- Add tray-menu themes: “after-rain forest”, “starry forest”, “candy forest”
-- Add a very subtle swaying animation
-- Change colors by season or time of day
-- Let mushrooms occasionally release tiny glowing spores
 
 ## 📴 Exit
 
