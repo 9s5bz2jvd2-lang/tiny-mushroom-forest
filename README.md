@@ -16,7 +16,9 @@ Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林，�
 - 每 5–15 秒随机长出一朵蘑菇
 - 最多 20 朵，超过后删除最早的一朵
 - 红、橙、黄、绿、蓝、紫、粉随机颜色
-- 10% → 100% 的 2 秒生长动画
+- 半透明水彩 / 手绘风格的蘑菇笔触
+- 从底部向上生长的 2 秒生长动画（10% → 100%）
+- 点一下蘑菇，它会化成一串上升的小气泡 🫧
 - `ESC` 退出，系统托盘菜单也可退出
 - 托盘菜单可手动 `Grow one mushroom`
 - 蘑菇完全由代码绘制，无图片依赖
@@ -79,7 +81,9 @@ Up to 20 mushrooms are kept at a time, and older friends softly step aside for n
 - A new mushroom grows every 5–15 seconds
 - Keeps at most 20 mushrooms, removing the oldest one first
 - Random red, orange, yellow, green, blue, purple, and pink caps
-- 10% → 100% growth animation in 2 seconds
+- Soft, semi-transparent watercolor / hand-drawn mushroom strokes
+- Bottom-to-top growth animation in 2 seconds (10% → 100%)
+- Click a mushroom to dissolve it into a burst of rising bubbles 🫧
 - Press `ESC` to exit, or use the system tray menu
 - Tray menu includes `Grow one mushroom`
 - Fully drawn in code; no image files needed
