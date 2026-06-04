@@ -6,6 +6,10 @@ Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林，�
 
 蘑菇会随时间慢慢变多，逐渐铺满屏幕；当数量达到上限时，最早的旧朋友会轻轻让位给新朋友。造型取材自多种真实蘑菇——毒蝇伞、鸡油菌、平菇、香菇、金针菇、牛肝菌、墨汁鬼伞、羊肚菌……全部由 `QPainter` 现场手绘，不需要任何图片素材。适合搜索「桌面美化」「生活美学」「治愈小游戏」「桌面小玩具」「cozy game」「desktop toy」的人。
 
+> **安全警示 / Safety warning**  
+> 请勿食用任何来源不明或无法识别的蘑菇。请在正规渠道购买野生菌。如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。  
+> Do not eat any mushroom from an unknown source or any mushroom you cannot confidently identify. Please buy wild mushrooms only through reputable channels. If you feel unwell after eating mushrooms, seek medical attention immediately to avoid delaying care.
+
 > 给忙碌的桌面种一小片不会打扰人的森林。
 
 ## ✨ 功能
@@ -44,6 +48,7 @@ python main.py
 > 一片会悄悄长在桌面上的小蘑菇森林。
 > 它不会吵你，也不会挡住你，只是在屏幕角落慢慢冒出彩色小蘑菇，陪你工作、发呆、写代码。
 > 每一朵蘑菇都像一个安静的小朋友：轻轻出现，乖乖待着，把忙碌的电脑变成一点点温柔的森林。
+> 安全提醒：请勿食用任何来源不明或无法识别的蘑菇；请在正规渠道购买野生菌；如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。
 
 ## 📁 文件结构
 
@@ -72,6 +77,10 @@ MIT
 # 🍄 Tiny Mushroom Forest
 
 Tiny Mushroom Forest is a tiny mushroom woodland that quietly moves into your desktop — a lightweight desktop toy, cozy mini game, and little piece of everyday life aesthetics. It is transparent and gentle, like a layer of morning mist. Every few seconds, colorful little mushrooms shyly appear across your screen — sometimes a single one, sometimes a small, gently staggered cluster — as if whispering: you worked hard today; here is a little bit of cute. Over time the forest slowly fills in and can cover the whole screen.
+
+> **Safety warning / 安全警示**  
+> Do not eat any mushroom from an unknown source or any mushroom you cannot confidently identify. Please buy wild mushrooms only through reputable channels. If you feel unwell after eating mushrooms, seek medical attention immediately to avoid delaying care.  
+> 请勿食用任何来源不明或无法识别的蘑菇。请在正规渠道购买野生菌。如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。
 
 ## 制作人 / Creator
 
@@ -131,6 +140,7 @@ On Windows, use `.venv\\Scripts\\activate` instead of the `source` command.
 > A tiny mushroom forest that quietly grows on your desktop.
 > It does not interrupt you or cover your work — it simply lets colorful little mushrooms appear in the corners of your screen, keeping you company while you work, think, or code.
 > Each mushroom feels like a shy little friend: softly arriving, calmly staying, and turning a busy computer into a gentler place.
+> Safety warning: do not eat any mushroom from an unknown source or any mushroom you cannot confidently identify; buy wild mushrooms only through reputable channels; if you feel unwell after eating mushrooms, seek medical attention immediately to avoid delaying care.
 
 ## 📴 Exit
 

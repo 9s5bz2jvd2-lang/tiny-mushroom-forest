@@ -2,7 +2,7 @@
 name: tiny-mushroom-forest
 description: |
   Tiny Mushroom Forest（蘑菇森林）桌面疗愈小玩具的标准调用技能。用户想安装、运行、演示、介绍、二次开发、维护、改 README/SKILL、添加水彩蘑菇、点击泡泡、营养泡泡低语、制作人简介，或想用 LingTai 做一个温柔桌面小应用/AI vibe coding 示例时使用。也覆盖：蘑菇单棵或成簇缓慢生长直至铺满屏幕、真实蘑菇造型变体（毒蝇伞/鸡油菌/平菇/香菇/金针菇/牛肝菌/墨汁鬼伞/羊肚菌等）、以及黑色加粗花体、不透明、显示至少 3 秒的英文营养低语。包含仓库地址、运行方式、功能边界、营养文案安全规则、贡献/PR 身份纪律与制作人中英双语简介。
-version: 1.1.0
+version: 1.2.0
 author: Wang Runyuan / LingTai
 ---
 
@@ -26,6 +26,7 @@ author: Wang Runyuan / LingTai
 
 - GitHub 仓库：`https://github.com/9s5bz2jvd2-lang/tiny-mushroom-forest`
 - 项目定位：一个温柔的桌面透明蘑菇森林小玩具；蘑菇会从屏幕各处缓慢长出（有时单棵、有时成簇），点击后化成上升泡泡，并出现一句简短、诗意、与主流营养学常识相关的英文低语。
+- 介绍页安全警示：项目介绍必须保留中英双语提醒——请勿食用任何来源不明或无法识别的蘑菇；请在正规渠道购买野生菌；如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。英文口径：Do not eat any mushroom from an unknown source or any mushroom you cannot confidently identify. Please buy wild mushrooms only through reputable channels. If you feel unwell after eating mushrooms, seek medical attention immediately to avoid delaying care.
 - 生长方式：调度器随机决定“单棵”或“成簇”生长；成簇时成员会带轻微错峰、自然散布在一个中心附近，而不是同一瞬间同一位置出现。容量较高（默认上限约 240 朵），随时间可逐渐铺满屏幕；超出上限时回收最早的一朵以保证性能。
 - 造型变体：除经典圆顶毒蝇伞外，新增多种取材自真实蘑菇的造型——`amanita`（毒蝇伞/白点）、`chanterelle`（鸡油菌/喇叭漏斗）、`oyster`（平菇/侧生扇形）、`shiitake`（香菇/低褐色凸帽）、`enoki`（金针菇/细高小帽）、`porcini`（牛肝菌/粗壮宽帽）、`inkcap`（墨汁鬼伞/高钟形）、`morel`（羊肚菌/蜂窝锥帽）。全部用 `QPainter` 程序化绘制，保留手绘水彩风，无图片素材。
 - 低语样式：点击后浮现的英文营养低语为 **黑色、加粗、花体（cursive/script）、完全不透明**，并至少显示 3 秒（低语生命周期与较短的泡泡动画解耦，蘑菇在低语显示窗口结束前不会被回收）。
@@ -75,11 +76,17 @@ python main.py
 
 对外介绍时可用：
 
-> Tiny Mushroom Forest 是一个用 Python/PySide6 做的透明桌面小玩具：彩色水彩蘑菇会从屏幕各处缓慢长出，有时单棵、有时成簇，随时间逐渐铺满屏幕；造型取材自多种真实蘑菇（毒蝇伞、鸡油菌、平菇、香菇、金针菇、牛肝菌、墨汁鬼伞、羊肚菌等）。点击蘑菇后，它会变成上升泡泡，并浮现一句黑色加粗花体、显示至少 3 秒的温柔英文营养小低语。它不是医学建议，只是一点日常营养常识与桌面陪伴感。
+> Tiny Mushroom Forest 是一个用 Python/PySide6 做的透明桌面小玩具：彩色水彩蘑菇会从屏幕各处缓慢长出，有时单棵、有时成簇，随时间逐渐铺满屏幕；造型取材自多种真实蘑菇（毒蝇伞、鸡油菌、平菇、香菇、金针菇、牛肝菌、墨汁鬼伞、羊肚菌等）。点击蘑菇后，它会变成上升泡泡，并浮现一句黑色加粗花体、显示至少 3 秒的温柔英文营养小低语。它不是医学建议，只是一点日常营养常识与桌面陪伴感。安全提醒：请勿食用任何来源不明或无法识别的蘑菇；请在正规渠道购买野生菌；如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。
 
 英文可用：
 
-> Tiny Mushroom Forest is a gentle transparent desktop toy built with Python and PySide6. Watercolor-style mushrooms slowly grow across your screen — sometimes one at a time, sometimes in small clusters — and can gradually fill the whole screen over time. Their shapes are inspired by real fungi (fly agaric, chanterelle, oyster, shiitake, enoki, porcini, inky cap, morel, and more). When clicked, a mushroom dissolves into rising bubbles with a short comforting nutrition-themed whisper rendered in black, bold, cursive script and shown for at least 3 seconds. It is not medical advice — just everyday nutrition basics wrapped in a cozy desktop companion.
+> Tiny Mushroom Forest is a gentle transparent desktop toy built with Python and PySide6. Watercolor-style mushrooms slowly grow across your screen — sometimes one at a time, sometimes in small clusters — and can gradually fill the whole screen over time. Their shapes are inspired by real fungi (fly agaric, chanterelle, oyster, shiitake, enoki, porcini, inky cap, morel, and more). When clicked, a mushroom dissolves into rising bubbles with a short comforting nutrition-themed whisper rendered in black, bold, cursive script and shown for at least 3 seconds. It is not medical advice — just everyday nutrition basics wrapped in a cozy desktop companion. Safety warning: do not eat any mushroom from an unknown source or any mushroom you cannot confidently identify; buy wild mushrooms only through reputable channels; if you feel unwell after eating mushrooms, seek medical attention immediately to avoid delaying care.
+
+## 蘑菇食用安全警示（介绍页必须保留）
+
+- 中文：请勿食用任何来源不明或无法识别的蘑菇。请在正规渠道购买野生菌。如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。
+- English: Do not eat any mushroom from an unknown source or any mushroom you cannot confidently identify. Please buy wild mushrooms only through reputable channels. If you feel unwell after eating mushrooms, seek medical attention immediately to avoid delaying care.
+- 这是项目介绍中的安全提示，不是营养泡泡低语；不要把它改写成玩笑、诗句或降低严肃性。
 
 ## 营养泡泡低语安全规则
 
