@@ -8,6 +8,8 @@ import time
 from PySide6.QtCore import QPointF, QRectF
 from PySide6.QtGui import (
     QColor,
+    QFont,
+    QFontMetricsF,
     QPainter,
     QPainterPath,
     QPen,
@@ -15,6 +17,22 @@ from PySide6.QtGui import (
     QRadialGradient,
 )
 from PySide6.QtCore import Qt
+
+from whispers import random_whisper
+
+
+# Script / cursive font preferences for the comforting whisper text, with a
+# graceful fallback chain across macOS, Windows, and generic systems. The final
+# fallback (a serif rendered italic below) keeps the words readable everywhere.
+WHISPER_FONT_FAMILIES = (
+    "Snell Roundhand",
+    "Apple Chancery",
+    "Brush Script MT",
+    "Segoe Script",
+    "Bradley Hand",
+    "Comic Sans MS",
+    "serif",
+)
 
 
 # How long the bubble-transformation animation lasts once a mushroom is clicked.
@@ -61,6 +79,8 @@ class Mushroom:
     opacity: float = 0.72
     # Set to a monotonic timestamp when the mushroom is clicked / popped.
     popping_at: float | None = None
+    # A gentle nutrition-themed whisper, chosen once when the mushroom is popped.
+    whisper: str | None = None
     _bubbles: list[Bubble] = field(default_factory=list)
     _paint_seed: int = field(default_factory=lambda: random.randint(0, 1_000_000))
 
@@ -101,6 +121,8 @@ class Mushroom:
             return
         self.popping_at = time.monotonic()
         rng = random.Random(self._paint_seed ^ 0xB0BB1E)
+        # Pick one comforting nutrition whisper to float up with the bubbles.
+        self.whisper = random_whisper(rng)
         size = self.current_size
         # Tint bubbles with a gentle blend of the cap color and white so the
         # 🫧 feel reads as "made of the mushroom".
@@ -137,14 +159,23 @@ class Mushroom:
         return left <= px <= right and top <= py <= bottom
 
     def bounding_rect(self) -> QRectF:
-        """Screen-space rect used to build the window's click mask."""
+        """Screen-space rect used to build the window's click mask.
+
+        The rect is intentionally wide so the comforting whisper text, which
+        floats above the rising bubbles while popping, stays inside the window
+        mask and is never clipped. (The mask in ``main.py`` also extends the
+        region upward to cover the rising-bubble animation.)
+        """
         size = max(self.current_size, self.full_size * 0.2)
         stem_h = size * 0.82
         cap_w = size * 1.2
+        # Whispers can be a couple of dozen characters; give them room on both
+        # sides of the mushroom so nothing gets cut off by the input mask.
+        whisper_half_w = max(cap_w * 0.6, self.full_size * 4.2)
         return QRectF(
-            self.x - cap_w * 0.6,
+            self.x - whisper_half_w,
             self.y - stem_h - size * 0.8,
-            cap_w * 1.2,
+            whisper_half_w * 2.0,
             stem_h + size * 0.95,
         )
 
@@ -345,5 +376,74 @@ class Mushroom:
                 r * 0.16,
                 r * 0.16,
             )
+
+        self._draw_whisper(painter, p)
+        painter.restore()
+
+    def _whisper_font(self, point_size: float) -> QFont:
+        """Build a script/cursive font, walking the fallback chain.
+
+        Qt's font matcher substitutes a system font if a family is missing, so
+        we register the whole preference list as substitutes and rely on the
+        final serif (rendered italic) to stay readable everywhere.
+        """
+        font = QFont()
+        font.setFamilies(list(WHISPER_FONT_FAMILIES))
+        font.setStyleHint(QFont.Cursive)
+        font.setPointSizeF(max(9.0, point_size))
+        font.setItalic(True)  # keeps the serif fallback feeling hand-lettered
+        return font
+
+    def _draw_whisper(self, painter: QPainter, p: float) -> None:
+        """Draw the comforting nutrition whisper, floating up and fading.
+
+        Coordinates are relative to the mushroom base (the painter is already
+        translated to ``self.x, self.y`` by ``_draw_bubbles``).
+        """
+        if not self.whisper:
+            return
+
+        size = self.current_size
+        # Fade in quickly, hold, then fade out alongside the bubbles. Stays a
+        # touch more opaque than the bubbles so the words remain readable.
+        fade_in = min(1.0, p / 0.18)
+        fade_out = max(0.0, 1.0 - max(0.0, (p - 0.4)) / 0.6)
+        alpha = max(0.0, min(1.0, fade_in * fade_out))
+        if alpha <= 0.01:
+            return
+
+        # Float gently upward, riding just above the bubble cluster.
+        base_y = -size * 1.15 - p * size * 1.4
+        point_size = max(11.0, size * 0.30)
+
+        painter.save()
+        painter.setOpacity(1.0)
+        font = self._whisper_font(point_size)
+        painter.setFont(font)
+
+        metrics = QFontMetricsF(font)
+        text_w = metrics.horizontalAdvance(self.whisper)
+        text_h = metrics.height()
+        # A roomy text rect, centered over the mushroom, so the script font is
+        # never clipped even with its generous ascenders/descenders.
+        rect = QRectF(
+            -text_w * 0.5 - size * 0.4,
+            base_y - text_h,
+            text_w + size * 0.8,
+            text_h * 1.6,
+        )
+
+        # Soft dark glow/shadow for legibility over any desktop background.
+        shadow = QColor(40, 32, 28, int(150 * alpha))
+        painter.setPen(QPen(shadow))
+        for ox, oy in ((1.4, 1.4), (-1.0, 1.2), (1.2, -1.0)):
+            painter.drawText(
+                rect.translated(ox, oy), Qt.AlignHCenter | Qt.AlignVCenter, self.whisper
+            )
+
+        # Warm soft-white fill with a faint pastel warmth.
+        ink = QColor(255, 251, 242, int(235 * alpha))
+        painter.setPen(QPen(ink))
+        painter.drawText(rect, Qt.AlignHCenter | Qt.AlignVCenter, self.whisper)
 
         painter.restore()

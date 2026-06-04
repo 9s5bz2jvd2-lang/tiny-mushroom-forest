@@ -19,6 +19,8 @@ Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林，�
 - 半透明水彩 / 手绘风格的蘑菇笔触
 - 从底部向上生长的 2 秒生长动画（10% → 100%）
 - 点一下蘑菇，它会化成一串上升的小气泡 🫧
+- 气泡升起时，会同时浮现一句手写体的营养主题暖心悄悄话（如「A glass of water is a quiet kindness.」），随气泡一起上升、淡出
+  - 文案取材于大众营养常识（水、纤维、全谷、蛋白质、五彩蔬果等），只是温柔的小提醒；不含任何医疗、疾病、排毒或减肥相关说法
 - `ESC` 退出，系统托盘菜单也可退出
 - 托盘菜单可手动 `Grow one mushroom`
 - 蘑菇完全由代码绘制，无图片依赖
@@ -48,6 +50,7 @@ python main.py
 TinyMushroomForest/
 ├── main.py
 ├── mushroom.py
+├── whispers.py
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -86,6 +89,8 @@ Up to 20 mushrooms are kept at a time, and older friends softly step aside for n
 - Soft, semi-transparent watercolor / hand-drawn mushroom strokes
 - Bottom-to-top growth animation in 2 seconds (10% → 100%)
 - Click a mushroom to dissolve it into a burst of rising bubbles 🫧
+- As the bubbles rise, a short comforting nutrition-themed whisper appears in a hand-lettered / cursive style (e.g. “A glass of water is a quiet kindness.”), floating upward and fading away with the bubbles
+  - Whispers are inspired by mainstream, everyday nutrition basics (water, fiber, whole grains, protein, colorful plants, and a balanced plate). They are gentle notes only — no medical, disease, detox, or weight-loss claims.
 - Press `ESC` to exit, or use the system tray menu
 - Tray menu includes `Grow one mushroom`
 - Fully drawn in code; no image files needed
