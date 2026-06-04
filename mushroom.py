@@ -53,10 +53,10 @@ WHISPER_FADE_TAIL = 0.14
 
 # Real-mushroom-inspired morphology variants. Each value selects a distinct
 # silhouette + cap-drawing routine while keeping the gentle watercolor style.
-# Names nod to real fungi so the forest reads as a varied, organic patch.
+# Avoid iconic poisonous-species silhouettes (especially fly agaric / amanita)
+# so the toy cannot be mistaken for a mushroom-identification guide.
 SHAPES = (
-    "classic",     # rounded toadstool cap (the original look)
-    "amanita",     # fly agaric: domed, spotted cap
+    "button",      # simple rounded cap, intentionally no fly-agaric spots
     "chanterelle", # funnel / trumpet, flaring upward
     "oyster",      # shelf / fan growing sideways off the stem
     "shiitake",    # low brown convex cap with pale cracks
@@ -203,7 +203,6 @@ class Mushroom:
         cap_lift = {
             "inkcap": size * 0.66,
             "morel": size * 0.70,
-            "amanita": size * 0.74 * 0.45,
             "enoki": size * 0.10,
         }.get(self.shape, size * 0.10)
         top = -stem_h - cap_lift - size * 0.30
@@ -277,9 +276,7 @@ class Mushroom:
             return size * 0.74, size * 0.28, 0.06 * size
         if shape == "shiitake":
             return size * 0.66, size * 0.30, 0.0          # short, sturdy
-        if shape == "amanita":
-            return size * 0.90, size * 0.27, size * 0.10  # slight basal bulb
-        return size * 0.82, size * 0.26, 0.0              # classic
+        return size * 0.82, size * 0.26, 0.0              # button / generic rounded cap
 
     def _draw_mushroom(self, painter: QPainter) -> None:
         size = self.current_size
@@ -305,7 +302,6 @@ class Mushroom:
         cap_top = -stem_h
         ctx = dict(rng=rng, size=size, stem_h=stem_h, cap_top=cap_top, sway=sway, jit=jit)
         drawer = {
-            "amanita": self._cap_amanita,
             "chanterelle": self._cap_chanterelle,
             "oyster": self._cap_oyster,
             "shiitake": self._cap_shiitake,
@@ -313,7 +309,7 @@ class Mushroom:
             "porcini": self._cap_porcini,
             "inkcap": self._cap_inkcap,
             "morel": self._cap_morel,
-        }.get(self.shape, self._cap_classic)
+        }.get(self.shape, self._cap_button)
         drawer(painter, **ctx)
 
         painter.restore()
@@ -386,7 +382,7 @@ class Mushroom:
             painter.drawEllipse(QPointF(gx, gy), max(0.5, size * 0.012), max(0.5, size * 0.012))
 
     def _domed_cap_path(self, rng, cap_w, cap_h, cap_top, jit, *, lift=0.0) -> QPainterPath:
-        """A rounded toadstool-style cap path. ``lift`` raises the crown."""
+        """A rounded cap path. ``lift`` raises the crown."""
         cap = QPainterPath()
         crown = cap_top - cap_h * lift
         cap.moveTo(_jitter(rng, (-cap_w * 0.52, cap_top + cap_h * 0.62), jit))
@@ -415,41 +411,16 @@ class Mushroom:
             QPointF(0, cap_top + cap_h * y_frac), cap_w * w_frac, cap_h * 0.12
         )
 
-    def _cap_classic(self, painter, rng, size, stem_h, cap_top, sway, jit) -> None:
-        cap_w = size * 1.08
-        cap_h = size * 0.56
+    def _cap_button(self, painter, rng, size, stem_h, cap_top, sway, jit) -> None:
+        """Plain rounded cap without fly-agaric-style white spots."""
+        cap_w = size * 1.02
+        cap_h = size * 0.50
         cap = self._domed_cap_path(rng, cap_w, cap_h, cap_top, jit)
         self._fill_cap(painter, cap, size, cap_w, cap_h, cap_top)
         self._cap_underside(painter, size, cap_w, cap_h, cap_top)
-        # Classic translucent dabbed spots.
-        painter.setPen(Qt.NoPen)
-        for sx, sy, sr in [(-0.22, 0.27, 0.075), (0.05, 0.18, 0.060),
-                           (0.27, 0.36, 0.052), (-0.04, 0.45, 0.045)]:
-            painter.setBrush(QColor(255, 255, 244, 150))
-            cx = cap_w * sx + rng.uniform(-jit, jit)
-            cy = cap_top + cap_h * sy + rng.uniform(-jit, jit)
-            painter.drawEllipse(QPointF(cx, cy), size * sr, size * sr * 0.82)
+        # Keep only low-opacity pigment granulation so it reads as watercolor,
+        # not as the white warts/spots associated with fly agaric.
         self._cap_specks(painter, rng, size, cap_w, cap_h, cap_top)
-
-    def _cap_amanita(self, painter, rng, size, stem_h, cap_top, sway, jit) -> None:
-        """Fly agaric: a tall domed cap dotted with bold opaque white warts."""
-        cap_w = size * 1.16
-        cap_h = size * 0.74
-        cap = self._domed_cap_path(rng, cap_w, cap_h, cap_top, jit, lift=0.45)
-        self._fill_cap(painter, cap, size, cap_w, cap_h, cap_top)
-        self._cap_underside(painter, size, cap_w, cap_h, cap_top, y_frac=0.66)
-        # Crisp white warts (more, brighter, ringed) — the amanita signature.
-        painter.setPen(Qt.NoPen)
-        warts = [(-0.30, 0.10, 0.090), (-0.02, -0.12, 0.075), (0.26, 0.06, 0.085),
-                 (-0.18, 0.34, 0.065), (0.14, 0.30, 0.070), (0.36, 0.30, 0.055),
-                 (-0.36, 0.36, 0.050)]
-        for sx, sy, sr in warts:
-            cx = cap_w * sx + rng.uniform(-jit, jit)
-            cy = cap_top + cap_h * sy + rng.uniform(-jit, jit)
-            painter.setBrush(QColor(255, 252, 240, 235))
-            painter.drawEllipse(QPointF(cx, cy), size * sr, size * sr * 0.90)
-            painter.setBrush(QColor(228, 214, 188, 90))
-            painter.drawEllipse(QPointF(cx, cy + size * 0.012), size * sr * 0.55, size * sr * 0.5)
 
     def _cap_chanterelle(self, painter, rng, size, stem_h, cap_top, sway, jit) -> None:
         """Chanterelle: a funnel/trumpet whose rim flares up and dips in the center."""

@@ -4,7 +4,7 @@
 
 Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林，也是一枚轻量的桌面生活美学小玩具 / cozy mini game。它很轻、很安静、透明得像一层晨雾：每隔几秒，就会有小蘑菇从桌面各处悄悄冒头——有时是单独一朵，有时是带着轻微错峰、自然散开的一小簇，像在说：今天也辛苦啦，给你长一点点可爱。
 
-蘑菇会随时间慢慢变多，逐渐铺满屏幕；当数量达到上限时，最早的旧朋友会轻轻让位给新朋友。造型取材自多种真实蘑菇——毒蝇伞、鸡油菌、平菇、香菇、金针菇、牛肝菌、墨汁鬼伞、羊肚菌……全部由 `QPainter` 现场手绘，不需要任何图片素材。适合搜索「桌面美化」「生活美学」「治愈小游戏」「桌面小玩具」「cozy game」「desktop toy」的人。
+蘑菇会随时间慢慢变多，逐渐铺满屏幕；当数量达到上限时，最早的旧朋友会轻轻让位给新朋友。造型取材自多种真实蘑菇——圆伞菇、鸡油菌、平菇、香菇、金针菇、牛肝菌、墨汁鬼伞、羊肚菌……全部由 `QPainter` 现场手绘，不需要任何图片素材。适合搜索「桌面美化」「生活美学」「治愈小游戏」「桌面小玩具」「cozy game」「desktop toy」的人。
 
 > **安全警示 / Safety warning**  
 > 请勿食用任何来源不明或无法识别的蘑菇。请在正规渠道购买野生菌。如果进食蘑菇后出现任何不适，请立即就医，以免耽搁病情。  
@@ -19,7 +19,7 @@ Tiny Mushroom Forest 是一片会偷偷住进你屏幕里的小蘑菇森林，�
 - 透明、无边框、置顶 overlay
 - 蘑菇缓慢出现：有时单棵，有时成簇（成簇成员带轻微错峰、自然散布在一个中心附近）
 - 随时间逐渐变多，可铺满屏幕；达到上限后回收最早的一朵，性能可控
-- 多种取材自真实蘑菇的造型变体：经典毒蝇伞、鸡油菌（漏斗）、平菇（侧生扇形）、香菇（低褐凸帽）、金针菇（细高小帽）、牛肝菌（粗壮宽帽）、墨汁鬼伞（高钟形）、羊肚菌（蜂窝锥帽）
+- 多种取材自真实蘑菇的造型变体：圆伞菇（简洁圆帽、无白点）、鸡油菌（漏斗）、平菇（侧生扇形）、香菇（低褐凸帽）、金针菇（细高小帽）、牛肝菌（粗壮宽帽）、墨汁鬼伞（高钟形）、羊肚菌（蜂窝锥帽）
 - 红、橙、黄、绿、蓝、紫、粉随机颜色
 - 半透明水彩 / 手绘风格的蘑菇笔触
 - 从底部向上生长的 2 秒生长动画（10% → 100%）
@@ -100,7 +100,7 @@ Tiny Mushroom Forest is a tiny mushroom woodland that quietly moves into your de
 
 Created with LingTai.
 
-Mushrooms keep appearing and the forest gradually grows denser; once it reaches its capacity, the oldest friends softly step aside for new ones. Their silhouettes are inspired by real fungi — fly agaric, chanterelle, oyster, shiitake, enoki, porcini, inky cap, morel, and more. Every mushroom is drawn live with `QPainter`, with no image assets required. Search-friendly words: desktop aesthetics, cozy game, desktop toy, mushroom game, generative art, screen overlay.
+Mushrooms keep appearing and the forest gradually grows denser; once it reaches its capacity, the oldest friends softly step aside for new ones. Their silhouettes are inspired by real fungi — button-style rounded caps, chanterelle, oyster, shiitake, enoki, porcini, inky cap, morel, and more. Every mushroom is drawn live with `QPainter`, with no image assets required. Search-friendly words: desktop aesthetics, cozy game, desktop toy, mushroom game, generative art, screen overlay.
 
 > Plant a small, non-intrusive forest on your busy desktop.
 
@@ -111,7 +111,7 @@ Mushrooms keep appearing and the forest gradually grows denser; once it reaches 
 - Transparent, frameless, always-on-top overlay
 - Mushrooms appear slowly — sometimes one at a time, sometimes in a small, gently staggered cluster scattered naturally around a center
 - The forest can gradually fill the whole screen; once it hits its capacity, the oldest mushroom is reaped first to keep performance reasonable
-- Several real-mushroom-inspired morphology variants: classic fly agaric, chanterelle (funnel), oyster (side shelf), shiitake (low brown convex), enoki (slender cluster knob), porcini (stout broad cap), inky cap (tall bell), morel (pitted honeycomb cone)
+- Several real-mushroom-inspired morphology variants: button-style rounded cap (plain, without white spots), chanterelle (funnel), oyster (side shelf), shiitake (low brown convex), enoki (slender cluster knob), porcini (stout broad cap), inky cap (tall bell), morel (pitted honeycomb cone)
 - Random red, orange, yellow, green, blue, purple, and pink caps
 - Soft, semi-transparent watercolor / hand-drawn mushroom strokes
 - Bottom-to-top growth animation in 2 seconds (10% → 100%)
