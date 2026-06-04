@@ -34,7 +34,10 @@ class MushroomForestOverlay(QWidget):
     def __init__(self) -> None:
         super().__init__()
         self.mushrooms: list[Mushroom] = []
-        self.max_mushrooms = 20
+        # Generous capacity so the forest can, given time, grow dense enough to
+        # cover much of the screen. The oldest mushroom is still reaped once the
+        # cap is exceeded, keeping per-frame painting cost bounded.
+        self.max_mushrooms = 240
 
         self.setWindowTitle("Tiny Mushroom Forest")
         self.setWindowFlags(
@@ -59,22 +62,59 @@ class MushroomForestOverlay(QWidget):
         self._schedule_next_mushroom()
 
     def _schedule_next_mushroom(self) -> None:
-        QTimer.singleShot(random.randint(5_000, 15_000), self._spawn_then_reschedule)
+        """Schedule the next spawn *event*, which may be a single mushroom or a
+        small cluster. Spawns stay slow and gentle so the forest fills in
+        naturally over a long session rather than all at once."""
+        QTimer.singleShot(random.randint(4_000, 12_000), self._spawn_then_reschedule)
 
     def _spawn_then_reschedule(self) -> None:
-        self.add_mushroom()
+        # Sometimes a lone mushroom, sometimes a cluster of a few — chosen at
+        # random so growth feels organic. Clusters are staggered (see below).
+        if random.random() < 0.45:
+            self._spawn_cluster()
+        else:
+            self.add_mushroom()
         self._schedule_next_mushroom()
 
-    def add_mushroom(self) -> None:
-        margin = 80
+    def _random_point(self) -> tuple[int, int]:
+        """A random point in the lower ~two thirds of the screen."""
+        margin = 60
         width = max(1, self.width())
         height = max(1, self.height())
         x = random.randint(margin, max(margin, width - margin))
-        y = random.randint(int(height * 0.35), max(int(height * 0.35), height - margin))
+        y = random.randint(int(height * 0.30), max(int(height * 0.30), height - margin))
+        return x, y
+
+    def add_mushroom(self, x: int | None = None, y: int | None = None) -> None:
+        if x is None or y is None:
+            x, y = self._random_point()
         self.mushrooms.append(Mushroom(x=x, y=y, cap_color=random.choice(CAP_COLORS)))
         if len(self.mushrooms) > self.max_mushrooms:
             self.mushrooms.pop(0)
+        self._update_input_mask()
         self.update()
+
+    def _spawn_cluster(self) -> None:
+        """Grow a small cluster of mushrooms around a shared center.
+
+        The members appear with a gentle stagger (a few hundred ms apart) and
+        are scattered organically around the center — never all at the exact
+        same instant or position — so a cluster reads like a natural patch.
+        """
+        cx, cy = self._random_point()
+        count = random.randint(3, 6)
+        spread = random.randint(40, 110)
+        width = max(1, self.width())
+        height = max(1, self.height())
+        for i in range(count):
+            ox = int(cx + random.gauss(0, spread))
+            oy = int(cy + random.gauss(0, spread * 0.55))
+            ox = min(max(20, ox), width - 20)
+            oy = min(max(int(height * 0.28), oy), height - 30)
+            # Small per-member delay so the cluster eases in rather than popping
+            # into existence all at once.
+            QTimer.singleShot(i * random.randint(180, 420),
+                              lambda px=ox, py=oy: self.add_mushroom(px, py))
 
     def _tick(self) -> None:
         """Per-frame update: drop finished pops, refresh the click mask, repaint."""

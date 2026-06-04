@@ -1,8 +1,8 @@
 ---
 name: tiny-mushroom-forest
 description: |
-  Tiny Mushroom Forest（蘑菇森林）桌面疗愈小玩具的标准调用技能。用户想安装、运行、演示、介绍、二次开发、维护、改 README/SKILL、添加水彩蘑菇、点击泡泡、营养泡泡低语、制作人简介，或想用 LingTai 做一个温柔桌面小应用/AI vibe coding 示例时使用。包含仓库地址、运行方式、功能边界、营养文案安全规则、贡献/PR 身份纪律与制作人中英双语简介。
-version: 1.0.0
+  Tiny Mushroom Forest（蘑菇森林）桌面疗愈小玩具的标准调用技能。用户想安装、运行、演示、介绍、二次开发、维护、改 README/SKILL、添加水彩蘑菇、点击泡泡、营养泡泡低语、制作人简介，或想用 LingTai 做一个温柔桌面小应用/AI vibe coding 示例时使用。也覆盖：蘑菇单棵或成簇缓慢生长直至铺满屏幕、真实蘑菇造型变体（毒蝇伞/鸡油菌/平菇/香菇/金针菇/牛肝菌/墨汁鬼伞/羊肚菌等）、以及黑色加粗花体、不透明、显示至少 3 秒的英文营养低语。包含仓库地址、运行方式、功能边界、营养文案安全规则、贡献/PR 身份纪律与制作人中英双语简介。
+version: 1.1.0
 author: Wang Runyuan / LingTai
 ---
 
@@ -16,15 +16,20 @@ author: Wang Runyuan / LingTai
 - 想安装、运行、演示这个桌面小玩具。
 - 想做一个透明桌面 overlay / cozy desktop toy / PySide6 小应用。
 - 想让蘑菇变水彩、半透明、从下往上生长、点击后变泡泡。
-- 想修改或新增点击蘑菇后的英文营养泡泡低语。
+- 想让蘑菇“单棵或成簇”随机、缓慢地出现，并随时间逐渐铺满整个屏幕。
+- 想新增更多真实蘑菇造型变体（如毒蝇伞/鸡油菌/平菇/香菇/金针菇/牛肝菌/墨汁鬼伞/羊肚菌等）。
+- 想修改或新增点击蘑菇后的英文营养泡泡低语，或调整其字体、颜色、显示时长。
 - 想给该项目补 README、制作人介绍、LingTai attribution、发布说明或 GitHub PR。
 - 想学习“AI vibe coding”如何从一个小而完整的项目开始。
 
 ## 项目事实
 
 - GitHub 仓库：`https://github.com/9s5bz2jvd2-lang/tiny-mushroom-forest`
-- 项目定位：一个温柔的桌面透明蘑菇森林小玩具；蘑菇会从屏幕边角长出，点击后化成上升泡泡，并出现一句简短、诗意、与主流营养学常识相关的英文低语。
-- 技术栈：Python + PySide6 / Qt；绘制主要在 `main.py`、`mushroom.py`，营养低语在 `whispers.py`。
+- 项目定位：一个温柔的桌面透明蘑菇森林小玩具；蘑菇会从屏幕各处缓慢长出（有时单棵、有时成簇），点击后化成上升泡泡，并出现一句简短、诗意、与主流营养学常识相关的英文低语。
+- 生长方式：调度器随机决定“单棵”或“成簇”生长；成簇时成员会带轻微错峰、自然散布在一个中心附近，而不是同一瞬间同一位置出现。容量较高（默认上限约 240 朵），随时间可逐渐铺满屏幕；超出上限时回收最早的一朵以保证性能。
+- 造型变体：除经典圆顶毒蝇伞外，新增多种取材自真实蘑菇的造型——`amanita`（毒蝇伞/白点）、`chanterelle`（鸡油菌/喇叭漏斗）、`oyster`（平菇/侧生扇形）、`shiitake`（香菇/低褐色凸帽）、`enoki`（金针菇/细高小帽）、`porcini`（牛肝菌/粗壮宽帽）、`inkcap`（墨汁鬼伞/高钟形）、`morel`（羊肚菌/蜂窝锥帽）。全部用 `QPainter` 程序化绘制，保留手绘水彩风，无图片素材。
+- 低语样式：点击后浮现的英文营养低语为 **黑色、加粗、花体（cursive/script）、完全不透明**，并至少显示 3 秒（低语生命周期与较短的泡泡动画解耦，蘑菇在低语显示窗口结束前不会被回收）。
+- 技术栈：Python + PySide6 / Qt；窗口/调度在 `main.py`，蘑菇造型/泡泡/低语绘制在 `mushroom.py`，营养低语短句在 `whispers.py`。
 - 许可证：以仓库 README / LICENSE 为准。
 - Attribution：README 中保留 `Created with LingTai.`。
 
@@ -70,11 +75,11 @@ python main.py
 
 对外介绍时可用：
 
-> Tiny Mushroom Forest 是一个用 Python/PySide6 做的透明桌面小玩具：彩色水彩蘑菇会从屏幕边角轻轻长出；点击蘑菇后，它会变成上升泡泡，并浮现一句温柔的英文营养小低语。它不是医学建议，只是一点日常营养常识与桌面陪伴感。
+> Tiny Mushroom Forest 是一个用 Python/PySide6 做的透明桌面小玩具：彩色水彩蘑菇会从屏幕各处缓慢长出，有时单棵、有时成簇，随时间逐渐铺满屏幕；造型取材自多种真实蘑菇（毒蝇伞、鸡油菌、平菇、香菇、金针菇、牛肝菌、墨汁鬼伞、羊肚菌等）。点击蘑菇后，它会变成上升泡泡，并浮现一句黑色加粗花体、显示至少 3 秒的温柔英文营养小低语。它不是医学建议，只是一点日常营养常识与桌面陪伴感。
 
 英文可用：
 
-> Tiny Mushroom Forest is a gentle transparent desktop toy built with Python and PySide6. Watercolor-style mushrooms softly grow from the edges of your screen; when clicked, they dissolve into rising bubbles with a short comforting nutrition-themed whisper. It is not medical advice — just everyday nutrition basics wrapped in a cozy desktop companion.
+> Tiny Mushroom Forest is a gentle transparent desktop toy built with Python and PySide6. Watercolor-style mushrooms slowly grow across your screen — sometimes one at a time, sometimes in small clusters — and can gradually fill the whole screen over time. Their shapes are inspired by real fungi (fly agaric, chanterelle, oyster, shiitake, enoki, porcini, inky cap, morel, and more). When clicked, a mushroom dissolves into rising bubbles with a short comforting nutrition-themed whisper rendered in black, bold, cursive script and shown for at least 3 seconds. It is not medical advice — just everyday nutrition basics wrapped in a cozy desktop companion.
 
 ## 营养泡泡低语安全规则
 
@@ -112,9 +117,13 @@ python3 -m py_compile main.py mushroom.py whispers.py
 如环境可用，建议再做 Qt offscreen smoke test：
 
 - `QT_QPA_PLATFORM=offscreen`
+- 检查 `mushroom.SHAPES` 里每个造型变体 `Mushroom.draw()` 都不报错。
 - 检查 `Mushroom.pop()` 后有 bubbles 与 whisper。
-- 检查 `Mushroom.draw()` 在 pop fade 的多个进度点不报错。
-- 检查 `bounding_rect()` 足够大，文字不会被窗口 mask 裁剪。
+- 检查 `Mushroom.draw()` 在 pop + whisper 的多个进度点不报错。
+- 检查 `bounding_rect()` / `contains()` 覆盖高/宽造型（inkcap、morel、enoki、oyster 等）的轮廓，文字不会被窗口 mask 裁剪。
+- 检查低语时长：`WHISPER_SECONDS >= 3`，且不透明保持窗口 `WHISPER_SECONDS * (1 - WHISPER_FADE_TAIL) >= 3`；低语字体 `bold` 且 `Cursive`，墨色为纯黑。
+- 检查 `Mushroom.is_dead` 在低语窗口结束前为 False（蘑菇不会被提前回收）。
+- 检查 overlay 的 `max_mushrooms` 足够大、`add_mushroom()` 单棵生长、`_spawn_cluster()` 成簇生长且超上限会回收最早的一朵。
 - 检查短句列表长度、空值、禁词。
 
 ## 贡献 / GitHub 操作纪律
@@ -140,8 +149,17 @@ gh api user --jq .login
 
 ## 维护提示
 
-- `main.py`：窗口、托盘、输入 mask、蘑菇生命周期调度。
-- `mushroom.py`：蘑菇绘制、水彩风格、点击检测、泡泡、低语绘制。
+- `main.py`：窗口、托盘、输入 mask、蘑菇生命周期调度；`_spawn_then_reschedule` 决定单棵/成簇，`_spawn_cluster` 负责错峰、自然散布的成簇生长，`max_mushrooms` 控制铺满屏幕的容量上限。
+- `mushroom.py`：蘑菇绘制、水彩风格、点击检测、泡泡、低语绘制。造型变体见模块级 `SHAPES`，每个 `_cap_*` 方法画一种帽形，`_stem_proportions` / `_silhouette_extent` 控制不同造型的茎比例与包围盒。低语样式/时长由 `WHISPER_SECONDS`、`WHISPER_FADE_TAIL`、`_whisper_font`、`_draw_whisper` 决定（黑、粗、花体、显示≥3 秒且窗口内不透明）。
 - `whispers.py`：营养主题低语短句库。
 - `README.md`：面向人类的介绍、运行方式、制作人信息。
-- `SKILL.md`：面向 LingTai/Agent 的标准调用说明；更新项目能力时同步维护。
+- `SKILL.md`：面向 LingTai/Agent 的标准调用说明；更新项目能力时同步维护，并同步复制到本地与共享技能目录（见下）。
+
+## 技能同步路径
+
+更新仓库 `SKILL.md` 后，需同步复制到以下两处，确保本地/共享的所有 agent 都能调用最新技能：
+
+- 本地：`.../mimo-2-5-pro/.library/custom/tiny-mushroom-forest/SKILL.md`
+- 共享：`.../.lingtai/.library_shared/tiny-mushroom-forest/SKILL.md`
+
+两份副本必须保留有效 YAML frontmatter：`name: tiny-mushroom-forest` 与触发词丰富的 `description`。
