@@ -67,6 +67,8 @@ MIT
 
 Tiny Mushroom Forest is a tiny mushroom woodland that quietly moves into your desktop — a lightweight desktop toy, cozy mini game, and little piece of everyday life aesthetics. It is transparent and gentle, like a layer of morning mist. Every 5–15 seconds, a colorful little mushroom shyly pops up from a corner of your screen, as if whispering: you worked hard today; here is a little bit of cute.
 
+Created with LingTai.
+
 Up to 20 mushrooms are kept at a time, and older friends softly step aside for new ones. Every mushroom is drawn live with `QPainter`, with no image assets required. Search-friendly words: desktop aesthetics, cozy game, desktop toy, mushroom game, generative art, screen overlay.
 
 > Plant a small, non-intrusive forest on your busy desktop.
