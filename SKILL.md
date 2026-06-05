@@ -177,3 +177,5 @@ gh api user --jq .login
 - 共享：`.../.lingtai/.library_shared/tiny-mushroom-forest/SKILL.md`
 
 两份副本必须保留有效 YAML frontmatter：`name: tiny-mushroom-forest` 与触发词丰富的 `description`。
+
+<!-- Maintainer update: Runyuan Wang (9s5bz2jvd2-lang). -->
